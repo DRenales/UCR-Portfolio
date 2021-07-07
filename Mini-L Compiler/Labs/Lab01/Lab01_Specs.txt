@@ -1,0 +1,64 @@
+
+cs152 Lab #1: Lexical Analyzer Generation Using flex
+
+This week we will hand out the first phase of the class project, which deals with lexical analysis using the flex tool. We will also complete an exercise that will help you get acquainted with flex.
+
+Outline for today's lab:
+
+    Go over the first phase of the class project (handed out)
+    Complete an exercise to help you become familiar with flex
+    Begin working on the first phase of the class project 
+
+Practice with flex
+
+In this exercise, we will write a flex specification for a lexical analyzer for a simple calculator language. For now, this language will contain integer numbers, the operators plus, minus, multiply, and divide, and parentheses for grouping. Additionally, the symbol "=" is in the language to terminate an expression. These symbols and their corresponding token names are shown in the table below.
+
+Symbol in Language 	Token Name
+integer number (e.g., "0", "12", "1719") 	NUMBER XXXX [where XXXX is the number itself]
++ 	PLUS
+- 	MINUS
+* 	MULT
+/ 	DIV
+( 	L_PAREN
+) 	R_PAREN
+= 	EQUAL
+
+The calculator language itself is very simple. There is only one type of phrase in the language: "Expression=", where "Expression" is defined in the similar way as for the class project, except for the fact that there are no variables in the calculator language, only numbers. For example, all of the following are valid in the calculator language.
+21=
+2+3*4=
+(2+3)*4=
+30/3/5=
+-250/50=
+(10+2)*-(3-5)=
+40-20-5=
+4*(1/1-3/3+10/5-21/7+45/9-121/11+26/13-45/15+34/17-38/19+63/21-1/1+2002/1001)=
+
+Note, however, that lexical analysis only scans for valid tokens in the calculator language, not valid expressions. The parsing phase (phase 2, the next phase of the class project) is where sequences of tokens will be checked to ensure that they adhere to the specified language grammar. Thus, for this exercise which deals only with lexical analysis, even such phrases as */2=10++-(+ and ***101***())(- can still be tokenized successfully.
+
+Task 1: Create a flex specification to recognize tokens in the calculator language. Print out an error message and exit if any unrecognized character is encountered in the input. Use flex to compile your specification into an executable lexical analyzer that reads text from standard-in and prints the identified tokens to the screen, one token per line.
+
+Task 2: Enhance your flex specification so that input text can be optionally read from an input file, if one is specified on the command line when invoking the lexical analyzer.
+
+Task 3: Enhance your flex specification so that in addition to printing out each encountered token, the lexical analyzer will also count the following.
+
+    The number of integers encountered
+    The number of operators encountered: +, -, *, /
+    The number of parentheses encountered: (, )
+    The number of equal signs encountered 
+
+The total counts should be printed to the screen after all input text has been tokenized. The counts need not be printed if an unrecognized character is encountered in the input (since the lexical analyzer should just terminate after issuing the error message).
+
+Task 4: For a challenge, you may want to try extending the calculator language to allow for decimal numbers in addition to regular integers. Thus, the following numbers should be recognized by your lexical analyzer.
+.123
+0.17
+2.171
+5.010
+171.0023
+
+For an even greater challenge, extend the calculator language to allow for scientific notation in the numbers. After the number, there can be an optional "e-phrase" consisting of either "e" or "E", followed by an optional "+" or "-", followed by one or more digits. For example, the following numbers in scientific notation would be recognized by your lexical analyzer.
+2e7
+2e+7
+2e-7
+2E+102
+5E0
+0.201e+17

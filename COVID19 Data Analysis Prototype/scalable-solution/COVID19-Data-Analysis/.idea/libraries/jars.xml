@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="jars">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../../linuxbrew/.linuxbrew/Cellar/apache-spark/3.0.1/libexec/jars" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../../../linuxbrew/.linuxbrew/Cellar/apache-spark/3.0.1/libexec/jars" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/../../../linuxbrew/.linuxbrew/Cellar/apache-spark/3.0.1/libexec/jars" recursive="false" />
+    <jarDirectory url="file://$PROJECT_DIR$/../../../linuxbrew/.linuxbrew/Cellar/apache-spark/3.0.1/libexec/jars" recursive="false" type="SOURCES" />
+  </library>
+</component>
